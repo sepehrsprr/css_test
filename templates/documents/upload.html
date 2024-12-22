@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Upload Document</title>
+</head>
+<body>
+    <h1>Upload a Document</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="document">Choose File:</label>
+        <input type="file" id="document" name="document" required>
+        <button type="submit">Upload</button>
+    </form>
+    <a href="{% url 'documents:document_list' %}">Back to Documents</a>
+</body>
+</html>

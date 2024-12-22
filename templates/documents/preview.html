@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Business Plan Preview</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        h1 { text-align: center; color: #007BFF; }
+        .content { margin-bottom: 20px; }
+        .actions { text-align: center; }
+        .btn { padding: 10px 20px; background: #007BFF; color: #fff; border: none; border-radius: 5px; text-decoration: none; margin: 5px; }
+        .btn:hover { background: #0056b3; }
+        .go-back-btn { background: #ff6f61; }
+        .go-back-btn:hover { background: #e64a45; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Business Plan Preview</h1>
+        <div class="content">
+            <h2>Executive Summary</h2>
+            <p>Your business aims to provide high-quality, affordable tech solutions tailored to small businesses.</p>
+            <h2>Target Audience</h2>
+            <p>Small business owners in the tech industry, especially those looking to scale operations with innovative tools.</p>
+            <h2>Marketing Strategy</h2>
+            <p>Leverage social media, SEO-optimized content, and webinars to build brand awareness.</p>
+        </div>
+        <div class="actions">
+            <a href="{% url 'documents:download_pdf' document.id %}" class="btn">Download  PDF</a>
+            <a href="{% url 'documents:download_docx' document.id %}" class="btn">Download  DOCX</a>
+            <a href="{% url 'documents:document_list' %}" class="btn go-back-btn">Go Back to Edit</a>
+        </div>
+    </div>
+</body>
+</html>

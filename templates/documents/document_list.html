@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    
+</head>
+
+<body>
+    <header>
+        <h1>Documents Management System</h1>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+        </nav>
+    </header>
+
+    <!-- Messages Section -->
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Dummy Data Preview Section -->
+    <section class="dummy-preview">
+        <h2>Preview Plan: Days 4–6</h2>
+        <div class="preview-box">
+            <h3>Day 4: Executive Summary</h3>
+            <p>Your business aims to provide high-quality, affordable tech solutions tailored to small businesses. This includes software development, IT consulting, and maintenance services.</p>
+            
+            <h3>Day 5: Target Audience</h3>
+            <p>Small business owners in the tech industry, especially those looking to scale operations with innovative tools and technology.</p>
+            
+            <h3>Day 6: Marketing Strategy</h3>
+            <p>Leverage social media platforms, targeted email campaigns, and SEO-optimized content to build brand awareness and drive traffic to our website. Engage with customers through webinars and community events.</p>
+        </div>
+
+    
+
+        <button class="download-btn">Download</button>
+    </section>
+
+    <!-- Document List -->
+    <section class="document-list">
+        <h2>Uploaded Documents</h2>
+        {% if page_obj %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date Added</th>
+                        <th>Pages</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for document in page_obj %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ document.title }}</td>
+                            <td>{{ document.description|default:"No description provided" }}</td>
+                            <td>{{ document.date_added|date:"F d, Y" }}</td>
+                            <td>{{ document.pages }}</td>
+                            <td>
+                                <a href="{% url 'documents:preview_document' document.id %}">Preview</a> | 
+                                <a href="{% url 'documents:export_document' document.id 'pdf' %}">Export PDF</a> | 
+                                <a href="{% url 'documents:export_document' document.id 'docx' %}">Export DOCX</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">No documents found.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No documents available. Please upload a document to get started!</p>
+        {% endif %}
+    </section>
+
+    <!-- Pagination -->
+    <section class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </section>
+
+    
+
+    <footer>
+        <p>&copy; {{ now|date:"Y" }} Document Management System</p>
+    </footer>
+</body>
+</html>

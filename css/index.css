@@ -1,0 +1,344 @@
+body {
+    background: #212121;
+    color: white;
+}
+
+header {
+    background: linear-gradient(
+        45deg,
+        #1cb0ff,
+        #40ff99,
+        #1cb0ff,
+        #40ff99
+    );
+    background-size: 400%;
+    animation: gradientFlow 20s linear infinite;
+}
+
+#form-container {
+    background: linear-gradient(#212121, #212121) padding-box,
+        linear-gradient(120deg, transparent 25%, #1cb0ff, #40ff99) border-box;
+    border: 2px solid transparent;
+    padding: 32px 24px;
+    font-size: 14px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 16px;
+}
+
+.form-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.form-step h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+}
+
+input {
+    color: white;
+    background: transparent;
+    border: 1px solid #414141;
+    border-radius: 5px;
+    padding: 12px 8px;
+    outline: none;
+    width: 100%;
+    margin: 0;
+}
+
+button {
+    border-radius: 5px;
+    padding: 12px;
+    background: #ffffff14;
+    color: #c7c5c5;
+    border: 1px solid #414141;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #1cb0ff;
+    cursor: pointer;
+    color: white;
+    border-color: transparent;
+}
+
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.step-indicator {
+    width: 30px;
+    height: 30px;
+    background: #414141;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c7c5c5;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.step-indicator.active {
+    background: #1cb0ff;
+    color: white;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: light) {
+    body {
+        background: #f5f5f5;
+        color: #333;
+    }
+    
+    #form-container {
+        background: linear-gradient(#ffffff, #ffffff) padding-box,
+            linear-gradient(120deg, transparent 25%, #1cb0ff, #40ff99) border-box;
+        border: 2px solid transparent;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: #000;
+    }
+    
+    input {
+        color: #000;
+        border-color: #999;
+        background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .step-indicator {
+        background: #e0e0e0;
+        color: #000;
+    }
+
+    .form-step h2 {
+        color: #000;
+    }
+
+    button {
+        color: #666;
+        background: #f0f0f0;
+        border-color: #999;
+    }
+
+    button:hover {
+        color: #fff;
+        background: #1cb0ff;
+    }
+
+    /* Summary section light mode adjustments */
+    .summary-item {
+        background: rgba(0, 0, 0, 0.02);
+        border-color: #999;
+    }
+    
+    .summary-label {
+        color: #000;
+    }
+    
+    .summary-value {
+        color: #000;
+    }
+
+    /* Regular button styles */
+    button {
+        color: #666;
+        background: #f0f0f0;
+        border-color: #999;
+    }
+
+    button:hover {
+        color: #fff;
+        background: #1cb0ff;
+    }
+
+    /* New button styles in light mode */
+    .next-btn, .back-btn, .submit-btn, .confirm-btn {
+        color: #666;
+        background-color: #f0f0f0;
+    }
+
+    .next-btn:hover, .back-btn:hover,
+    .submit-btn:hover, .confirm-btn:hover {
+        color: #fff;
+    }
+
+    .next-btn .label, .back-btn .label,
+    .submit-btn .label, .confirm-btn .label {
+        color: #666;
+    }
+
+    .next-btn:hover .label, .back-btn:hover .label,
+    .submit-btn:hover .label, .confirm-btn:hover .label {
+        color: #fff;
+    }
+
+    /* Submit/confirm specific colors */
+    .submit-btn, .confirm-btn {
+        background-color: #f0f0f0;
+    }
+
+    .submit-btn:hover, .confirm-btn:hover {
+        color: #fff;
+    }
+} 
+
+.summary-step {
+    align-items: stretch !important;
+}
+
+.summary-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    border: 1px solid #414141;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.summary-label {
+    color: #c7c5c5;
+    font-size: 0.9em;
+}
+
+.summary-value {
+    color: white;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+/* Update for light mode */
+@media (prefers-color-scheme: light) {
+    .summary-item {
+        background: rgba(0, 0, 0, 0.02);
+    }
+    .summary-label {
+        color: #666;
+    }
+    .summary-value {
+        color: #333;
+    }
+} 
+
+/* Next and Back button styles */
+.cta {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.cta span {
+    padding-bottom: 7px;
+    letter-spacing: 4px;
+    font-size: 14px;
+    padding-right: 15px;
+    text-transform: uppercase;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Update button styles with smaller dimensions */
+.next-btn, .back-btn, .submit-btn, .confirm-btn {
+    position: relative;
+    font-size: 12px;  /* Smaller font size */
+    letter-spacing: 2px;  /* Reduced letter spacing */
+    height: 2.5em;  /* Reduced height */
+    padding: 0 2em;  /* Reduced padding */
+    border: none;
+    background-color: #1cb0ff;
+    color: #fff;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-radius: 4px;  /* Slightly smaller border radius */
+}
+
+/* Adjust icon size and position */
+.next-btn .icon, .back-btn .icon, .submit-btn .icon, .confirm-btn .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5em;  /* Match button height */
+    width: 2.5em;  /* Smaller width */
+    position: absolute;
+    top: 2.5em;  /* Match button height */
+    right: 0;
+    opacity: 0;
+    transition: 0.4s;
+    font-size: 12px;  /* Smaller icon size */
+}
+
+/* Keep other styles the same */
+.next-btn::before, .back-btn::before, .submit-btn::before, .confirm-btn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    height: 0px;
+    width: 100%;
+    background: rgb(28,176,255);
+    background: linear-gradient(90deg, rgba(28,176,255,1) 20%, rgba(64,255,153,1) 100%);
+    transition: 0.2s;
+}
+
+.next-btn .label, .back-btn .label, .submit-btn .label, .confirm-btn .label {
+    position: relative;
+}
+
+.next-btn:hover::before, .back-btn:hover::before, 
+.submit-btn:hover::before, .confirm-btn::before {
+    height: 100%;
+}
+
+.next-btn:hover .icon, .back-btn:hover .icon,
+.submit-btn:hover .icon, .confirm-btn:hover .icon {
+    top: 0;
+    opacity: 1;
+}
+
+/* Submit button specific color */
+.submit-btn, .confirm-btn {
+    background-color: #40ff99;
+}
+
+.submit-btn::before, .confirm-btn::before {
+    background: rgb(64,255,153);
+    background: linear-gradient(90deg, rgba(64,255,153,1) 20%, rgba(28,176,255,1) 100%);
+}

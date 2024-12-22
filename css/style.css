@@ -1,0 +1,588 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    background: linear-gradient(
+        45deg,
+        #ff0000,    /* Pure red */
+        #ff2b2b,    /* Lighter red */
+        #D90429,    /* Darker red */
+        #EF233C,    /* Red with slight pink */
+        #cd1818,    /* Deep red */
+        #8B0000,    /* Dark red */
+        #ff0000     /* Back to pure red for seamless loop */
+    );
+    background-size: 400%;
+    color: white;   /* Changed to white for better contrast */
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    animation: 
+        headerFadeIn 0.5s ease-in-out,
+        redFlow 20s linear infinite;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3),
+    0 0 10px rgba(255,255,255,0.5);
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 1.2em;
+    text-shadow: 4px 4px 8px rgba(0,0,0,0.3),
+    0 0 10px rgba(255,255,255,0.5);
+}
+
+main {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 80px;
+    box-sizing: border-box;
+}
+
+#form-container {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background: #f9f9f9;
+    padding: 20px;
+    transition: background 0.3s;
+}
+
+.form-step {
+    display: none;
+    padding: 20px;
+    transition: background 0.3s;
+    
+}
+
+.form-step.active {
+    display: block;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    box-sizing: border-box;
+    color: inherit;
+    background: #fff;
+    transition: background 0.3s;
+}
+
+button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    border: none;
+    background: #D90429;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2b2d30;
+}
+
+button::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    height: 0px;
+    width: 100%;
+    background: rgb(28,176,255);
+    background: linear-gradient(90deg, rgba(28,176,255,1) 20%, rgba(64,255,153,1) 100%);
+    transition: 0.2s;
+    color: #fff;
+}
+
+.progress-indicator {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.step-indicator {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #ccc;
+    color: #fff;
+    border-radius: 50%;
+    line-height: 30px;
+    margin: 0 5px;
+    font-size: 0.9em;
+    text-align: center;
+    cursor: default;
+    transition: background 0.3s;
+}
+
+.step-indicator.active {
+    background: #303030;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #888;
+    transition: color 0.3s;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: inherit;  /* Takes parent's background color */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    header p {
+        font-size: 1em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .progress-indicator {
+        font-size: 0.8em;
+    }
+    main {
+        margin-bottom: 80px;  /* Add space for footer */
+    }
+    footer {
+        padding: 15px;
+        font-size: 0.8em;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #212020;
+        color: #ddd;
+    }
+    #form-container {
+        background: #212020;
+        border: 1px solid #444;
+    }
+    input {
+        background: #444;
+        border: 1px solid #555;
+        color: #ddd;
+    }
+    
+    .step-indicator {
+        background: #a30620;
+        color: #fff;
+    }
+    .step-indicator.active {
+        background: #8D99AE;
+    }
+}
+
+/* Renamed animation from rainbow to redFlow */
+@keyframes redFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Navbar styles */
+.navbar {
+    background: linear-gradient(#212121, #212121) padding-box,
+        linear-gradient(120deg, transparent 25%, #1cb0ff, #40ff99) border-box;
+    border-bottom: 2px solid transparent;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1cb0ff;
+    text-decoration: none;
+    order: 2;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    order: 1;
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+}
+
+.nav-links li {
+    margin: 0 5px;
+    position: relative;
+}
+
+.nav-links a {
+    background-color: transparent;
+    font-family: sans-serif;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: relative;
+    padding-left: 11px;
+    text-align: center;
+    transition: 0.1s;
+    z-index: 1;
+    text-decoration: none;
+    display: block;
+}
+
+.nav-links a::before {
+    content: "";
+    border-radius: 1px;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #1cb0ff;
+    left: -10px;
+    top: 19px;
+    cursor: pointer;
+    transform: rotate(225deg);
+    transition: 0.3s;
+    z-index: -1;
+}
+
+.nav-links a:hover {
+    color: #212121;
+}
+
+.nav-links a:hover::before {
+    transform: rotate(0deg);
+    width: 100%;
+    height: 40px;
+    top: 2px;
+    left: 0;
+    border-radius: 3px;
+    background-color: #1cb0ff;
+}
+
+.nav-links a:active::before {
+    background-color: #40ff99;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        padding: 20px 0;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        padding: 10px 30px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nav-links a::before {
+        left: 50%;
+        transform: translateX(-50%) rotate(225deg);
+    }
+
+    .nav-links a:hover::before {
+        left: 0;
+        transform: rotate(0deg);
+    }
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 2px;
+    background-color: #c7c5c5;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Add this new class */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+    order: 3;
+}
+
+/* Mobile navigation */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        height: calc(100vh - 70px);
+        background: #212121;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        transition: right 0.5s ease;
+        padding: 20px 0;
+        order: 3;
+    }
+
+    .nav-brand {
+        order: 1;
+    }
+
+    .auth-buttons {
+        order: 2;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .nav-active {
+        right: 0;
+    }
+}
+
+/* Burger animation */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 5px);
+    background-color: #1cb0ff;
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -5px);
+    background-color: #1cb0ff;
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: light) {
+    .navbar {
+        background: linear-gradient(#ffffff, #ffffff) padding-box,
+            linear-gradient(120deg, transparent 25%, #1cb0ff, #40ff99) border-box;
+    }
+    
+    .nav-links a {
+        color: #666;
+    }
+    
+    /* Make header text lighter gray in light mode */
+    header {
+        color: #444;
+    }
+
+    header h1 {
+        color: #333;  /* Slightly darker for headings */
+    }
+
+    header p {
+        color: #666;  /* Lighter gray for paragraphs */
+    }
+    
+    @media screen and (max-width: 768px) {
+        .nav-links {
+            background: #f5f5f5;
+        }
+    }
+}
+
+/* Google Button Styles */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #414141;
+}
+
+.divider span {
+    padding: 0 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.google-btn {
+    width: 100%;
+    height: 42px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+    box-shadow: 0 0 6px #4285f4;
+}
+
+.google-btn:active {
+    background: #eee;
+}
+
+.google-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    margin-left: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.google-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-text {
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .divider::before,
+    .divider::after {
+        border-bottom: 1px solid #414141;
+    }
+
+    .divider span {
+        color: #c7c5c5;
+    }
+
+    .google-btn {
+        background-color: #303030;
+        border: 1px solid #414141;
+    }
+
+    .btn-text {
+        color: #fff;
+    }
+
+    .google-btn:hover {
+        box-shadow: 0 0 6px #1cb0ff;
+    }
+
+    .google-btn:active {
+        background: #252525;
+    }
+}
+
+/* Add or update these styles in your existing CSS */
+.google-btn {
+    width: 100%;
+    height: 42px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.google-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1px;
+}
+
+.google-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.btn-text {
+    margin: 0 auto;
+    color: #757575;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}

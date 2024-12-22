@@ -1,0 +1,35 @@
+{% extends 'planner/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Welcome Back</h1>
+    <p>Please login to continue</p>
+</header>
+
+<main>
+    <div id="form-container">
+        <div class="form-step active">
+            <h2>Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit" class="button">Login</button>
+                <div class="form-links">
+                    <a href="#">Forgot Password?</a>
+                    <a href="{% url 'accounts:signup' %}">Create Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'accounts/js/script.js' %}"></script>
+{% endblock %} 
